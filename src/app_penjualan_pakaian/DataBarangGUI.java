@@ -491,7 +491,7 @@ public class DataBarangGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBatalActionPerformed
 
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
-        cariData("WHERE jenis_barang like  '%"+txtCari.getText()+"%'");
+        cariData("WHERE jenis_barang like  '%" + txtCari.getText() + "%'");
     }//GEN-LAST:event_btnCariActionPerformed
 
    
