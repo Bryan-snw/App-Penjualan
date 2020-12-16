@@ -14,11 +14,11 @@ import javax.swing.table.DefaultTableModel;
  * @author ASUS
  */
 public class JenisBarangGUI extends javax.swing.JFrame {
-    public Statement st;
-    public ResultSet rs;
-    boolean edit;
-    String sJenis;
-    public DefaultTableModel tabModel;
+    private Statement st;
+    private ResultSet rs;
+    private boolean edit;
+    private String sJenis;
+    private DefaultTableModel tabModel;
     Connection cn = Koneksi.Koneksi();
     
     public JenisBarangGUI() {

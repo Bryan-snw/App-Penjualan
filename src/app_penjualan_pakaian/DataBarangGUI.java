@@ -14,11 +14,11 @@ import javax.swing.table.DefaultTableModel;
  * @author ASUS
  */
 public class DataBarangGUI extends javax.swing.JFrame {
-    public Statement st;
-    public ResultSet rs;
-    boolean edit;
-    String sKode;
-    public DefaultTableModel tabModel;
+    private Statement st;
+    private ResultSet rs;
+    private boolean edit;
+    private String sKode;
+    private DefaultTableModel tabModel;
     Connection cn = Koneksi.Koneksi();
     
     public DataBarangGUI() {

@@ -11,9 +11,6 @@ package app_penjualan_pakaian;
  */
 public class App_Pengelolah_Data {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         new MenuUtama();
     }

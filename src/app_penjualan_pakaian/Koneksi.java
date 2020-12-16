@@ -7,6 +7,7 @@ package app_penjualan_pakaian;
 
 import java.sql.*;
 import javax.swing.JOptionPane;
+
 public class Koneksi {
     Connection koneksi;
     public static Connection Koneksi() {
@@ -16,7 +17,7 @@ public class Koneksi {
             return koneksi;
         } catch(Exception e) {
             JOptionPane.showMessageDialog(null, e);
-            
+           
             return null;
         }
     }
