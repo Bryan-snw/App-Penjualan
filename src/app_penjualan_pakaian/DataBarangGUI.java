@@ -158,6 +158,11 @@ public class DataBarangGUI extends javax.swing.JFrame {
 
         btnCari.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnCari.setText("Cari");
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Berdasarkan Jennis Barang");
@@ -348,7 +353,7 @@ public class DataBarangGUI extends javax.swing.JFrame {
 
         while (rs.next()) {
           Object[] data = {
-              rs.getString("jenis_barang"),
+              rs.getString("kode_barang"),
               rs.getString("nama_barang"),
               rs.getString("jenis_barang"),
               rs.getString("stock"),
@@ -484,6 +489,10 @@ public class DataBarangGUI extends javax.swing.JFrame {
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
         refresh();
     }//GEN-LAST:event_btnBatalActionPerformed
+
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+        cariData("WHERE jenis_barang like  '%"+txtCari.getText()+"%'");
+    }//GEN-LAST:event_btnCariActionPerformed
 
    
 

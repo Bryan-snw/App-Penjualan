@@ -9,7 +9,7 @@ package app_penjualan_pakaian;
  *
  * @author ASUS
  */
-public class App_Penjualan_Pakaian {
+public class App_Pengelolah_Data {
 
     /**
      * @param args the command line arguments
