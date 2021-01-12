@@ -471,21 +471,6 @@ public class DataBarangGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnEditActionPerformed
 
-    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
-       try {
-            int jawab;
-
-            if ((jawab = JOptionPane.showConfirmDialog(null, "Ingin menghapus data?", "konfirmasi", JOptionPane.YES_NO_OPTION)) == 0) {
-              st = cn.createStatement();
-              st.executeUpdate("DELETE FROM barang WHERE kode_barang='"+ tabModel.getValueAt(jTable1.getSelectedRow(), 0) + "'");
-              tampilData("");
-              refresh();
-            }
-          } catch (Exception e) {
-            e.printStackTrace();
-          }
-    }//GEN-LAST:event_btnHapusActionPerformed
-
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
         refresh();
     }//GEN-LAST:event_btnBatalActionPerformed
@@ -493,6 +478,21 @@ public class DataBarangGUI extends javax.swing.JFrame {
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
         cariData("WHERE jenis_barang like  '%" + txtCari.getText() + "%'");
     }//GEN-LAST:event_btnCariActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        try {
+            int jawab;
+
+            if ((jawab = JOptionPane.showConfirmDialog(null, "Ingin menghapus data?", "konfirmasi", JOptionPane.YES_NO_OPTION)) == 0) {
+                st = cn.createStatement();
+                st.executeUpdate("DELETE FROM barang WHERE kode_barang='"+ tabModel.getValueAt(jTable1.getSelectedRow(), 0) + "'");
+                tampilData("");
+                refresh();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnHapusActionPerformed
 
    
 

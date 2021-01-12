@@ -35,11 +35,13 @@ public class MenuUtama extends javax.swing.JFrame {
         btnJenisBarang = new javax.swing.JButton();
         btnDataBarang = new javax.swing.JButton();
         btnKeluar = new javax.swing.JButton();
+        btnTransaksi = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         menuJenisBarang = new javax.swing.JMenuItem();
         menuDataBarang = new javax.swing.JMenuItem();
-        menuKeluar = new javax.swing.JMenu();
+        Transaksi = new javax.swing.JMenu();
+        keluar = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
 
@@ -52,7 +54,7 @@ public class MenuUtama extends javax.swing.JFrame {
         jLabel1.setText("RETRO");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Aplikasi Pengelolahan Data");
+        jLabel2.setText("Aplikasi Penjualan Pakaian");
 
         btnJenisBarang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         btnJenisBarang.setText("Jenis Barang");
@@ -78,6 +80,14 @@ public class MenuUtama extends javax.swing.JFrame {
             }
         });
 
+        btnTransaksi.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnTransaksi.setText("Transaksi");
+        btnTransaksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransaksiActionPerformed(evt);
+            }
+        });
+
         jMenu3.setText("Master Data");
 
         menuJenisBarang.setText("Jenis Barang");
@@ -98,18 +108,31 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        menuKeluar.setText("Keluar");
-        menuKeluar.addMouseListener(new java.awt.event.MouseAdapter() {
+        Transaksi.setText("Transaksi");
+        Transaksi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuKeluarMouseClicked(evt);
+                TransaksiMouseClicked(evt);
             }
         });
-        menuKeluar.addActionListener(new java.awt.event.ActionListener() {
+        Transaksi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuKeluarActionPerformed(evt);
+                TransaksiActionPerformed(evt);
             }
         });
-        jMenuBar1.add(menuKeluar);
+        jMenuBar1.add(Transaksi);
+
+        keluar.setText("Keluar");
+        keluar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                keluarMouseClicked(evt);
+            }
+        });
+        keluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                keluarActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(keluar);
 
         setJMenuBar(jMenuBar1);
 
@@ -118,16 +141,18 @@ public class MenuUtama extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(68, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(136, 136, 136))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnJenisBarang, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                        .addComponent(btnJenisBarang, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnDataBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(73, 73, 73))))
+                        .addComponent(btnDataBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -148,23 +173,24 @@ public class MenuUtama extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnJenisBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDataBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDataBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(392, 284));
+        setSize(new java.awt.Dimension(400, 284));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuKeluarActionPerformed
-    
-    }//GEN-LAST:event_menuKeluarActionPerformed
+    private void TransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransaksiActionPerformed
+        
+    }//GEN-LAST:event_TransaksiActionPerformed
 
-    private void menuKeluarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuKeluarMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_menuKeluarMouseClicked
+    private void TransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TransaksiMouseClicked
+        new Transaksi();
+    }//GEN-LAST:event_TransaksiMouseClicked
 
     private void btnJenisBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJenisBarangActionPerformed
         new JenisBarangGUI();
@@ -187,19 +213,33 @@ public class MenuUtama extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnKeluarActionPerformed
 
+    private void btnTransaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransaksiActionPerformed
+        new Transaksi();
+    }//GEN-LAST:event_btnTransaksiActionPerformed
+
+    private void keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarActionPerformed
+    
+    }//GEN-LAST:event_keluarActionPerformed
+
+    private void keluarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_keluarMouseClicked
+        this.dispose();  
+    }//GEN-LAST:event_keluarMouseClicked
+
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Transaksi;
     private javax.swing.JButton btnDataBarang;
     private javax.swing.JButton btnJenisBarang;
     private javax.swing.JButton btnKeluar;
+    private javax.swing.JButton btnTransaksi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu keluar;
     private javax.swing.JMenuItem menuDataBarang;
     private javax.swing.JMenuItem menuJenisBarang;
-    private javax.swing.JMenu menuKeluar;
     // End of variables declaration//GEN-END:variables
 }
