@@ -10,8 +10,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class Transaksi extends javax.swing.JFrame {
-    private Statement st;
+    private Statement st,str;
     private ResultSet rsb,rst;
+    private int update_stock;
     private String sKode,stock,s;
     private DefaultTableModel barang,transaksi;
     Connection cn = Koneksi.Koneksi();
@@ -331,6 +332,19 @@ public class Transaksi extends javax.swing.JFrame {
         btnBatal.setEnabled(true);
     }//GEN-LAST:event_tblBarangMouseClicked
 
+    private void updatedata(){
+    try {
+            st = cn.createStatement();
+            
+            update_stock = Integer.parseInt(stock) - Integer.parseInt(txtJumlah.getText());
+           
+            st.executeUpdate("UPDATE barang set " +"stock='"+ update_stock + "' WHERE kode_barang ='" + txtKodeBarang.getText() + "' ");
+                 
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     private void btnBeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBeliActionPerformed
 
         try {
@@ -347,6 +361,7 @@ public class Transaksi extends javax.swing.JFrame {
                 tampilDataTransaksi("");
                 }else{
                     st.executeUpdate("INSERT INTO transaksi VALUES ('"+sKode+"','"+txtKodeBarang.getText()+"','"+txtNamaBarang.getText()+"','"+txtJenisBarang.getText()+"','"+txtJumlah.getText()+"','"+txtHargaSatuan.getText()+"','"+txtTotalHarga.getText()+"')");
+                    updatedata();
                     JOptionPane.showMessageDialog(null, "Pembelian Berhasil!");
                     tampilDataTransaksi("");
                     refresh();
@@ -381,7 +396,8 @@ public class Transaksi extends javax.swing.JFrame {
         }
       
     }//GEN-LAST:event_btnHitungActionPerformed
-    public void judulBarang() {
+    
+    public void judulBarang(){
         Object[] judulbarang = {"Kode Barang","Nama Barang","Jenis Barang","Stock Barang","Harga Barang"};
         barang  = new DefaultTableModel(null, judulbarang);
         tblBarang.setModel(barang);
@@ -432,25 +448,25 @@ public class Transaksi extends javax.swing.JFrame {
     }
     
     public void autokode(){
-       sKode = String.valueOf((tblTransaksi.getRowCount())+1);
-       s = String.valueOf(sKode.length());
-    switch(s){
-            case "1" :
-                sKode = "TF-" + "000" + sKode;
-                break;
-            case "2" :
-                sKode = "TF-" + "00" + sKode;
-                break;
-            case "3" :
-                sKode = "TF-" + "0" + sKode;
-                break;
-            case "4" :
-                sKode = "TF-" + "" + sKode;
-                break;
-        }
-    jLabel10.setText("Kode transaksi : "+sKode);
+        sKode = String.valueOf((tblTransaksi.getRowCount())+1);
+        s = String.valueOf(sKode.length());
+        switch(s){
+                case "1" :
+                    sKode = "TF-" + "000" + sKode;
+                    break;
+                case "2" :
+                    sKode = "TF-" + "00" + sKode;
+                    break;
+                case "3" :
+                    sKode = "TF-" + "0" + sKode;
+                    break;
+                case "4" :
+                    sKode = "TF-" + "" + sKode;
+                    break;
+            }
+        jLabel10.setText("Kode transaksi : "+sKode);
        
-       jLabel11.setText("Jumlah Data :"+String.valueOf(tblBarang.getRowCount()));
+        jLabel11.setText("Jumlah Data :"+String.valueOf(tblBarang.getRowCount()));
     }
     
     public void tampilDataBarang(String where) {
@@ -478,10 +494,10 @@ public class Transaksi extends javax.swing.JFrame {
     
     public void tampilDataTransaksi(String where) {
       try {
-        st = cn.createStatement();
+        str = cn.createStatement();
         transaksi.getDataVector().removeAllElements();
         transaksi.fireTableDataChanged();
-        rst = st.executeQuery("SELECT * FROM transaksi " + where);
+        rst = str.executeQuery("SELECT * FROM transaksi " + where);
 
         while (rst.next()) {
           Object[] data = {
