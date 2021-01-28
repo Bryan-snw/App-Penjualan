@@ -393,7 +393,7 @@ public class JenisBarangGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHapusActionPerformed
 
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
-        cariData("WHERE jenis_barang like  '%" + jTextField2.getText() + "%'");
+        tampilData("WHERE jenis_barang like  '%" + jTextField2.getText() + "%'");
     }//GEN-LAST:event_btnCariActionPerformed
 
    
