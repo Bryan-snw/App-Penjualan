@@ -330,20 +330,20 @@ public class JenisBarangGUI extends javax.swing.JFrame {
             
             if (edit) {
                 st.executeUpdate("UPDATE kategori set " +"jenis_barang='"+ jTextField1.getText() + "' WHERE jenis_barang ='" + sJenis + "' ");
+                
+                JOptionPane.showMessageDialog(null, "Update Berhasil");
             }else{
                 if (cariData(" WHERE jenis_barang like  '%"+jTextField1.getText()+"%'")){
                     JOptionPane.showMessageDialog(null, "Data Sudah Ada!","Pesan Error", JOptionPane.ERROR_MESSAGE);
                     tampilData("");
                 }else{
                     st.executeUpdate("INSERT INTO kategori VALUES ('"+jTextField1.getText()+"')");
+                    
+                    JOptionPane.showMessageDialog(null, "Simpan Berhasil");
                 }
             }
             tampilData("");
-            if (edit){
-                JOptionPane.showMessageDialog(null, "Update Berhasil");
-            }else {
-                JOptionPane.showMessageDialog(null, "Simpan Berhasil");
-            }
+            
             refresh();
         }catch (Exception e) {
             e.printStackTrace();

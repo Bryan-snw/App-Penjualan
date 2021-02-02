@@ -169,6 +169,11 @@ public class DataBarangGUI extends javax.swing.JFrame {
 
         cmbJenisBarang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         cmbJenisBarang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbJenisBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbJenisBarangActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -410,20 +415,21 @@ public class DataBarangGUI extends javax.swing.JFrame {
                 st.executeUpdate("UPDATE barang set " +"kode_barang='"+ txtKodeBarang.getText() + "', "
                 + "nama_barang='" + txtNamaBarang.getText() + "'," + "jenis_barang='" + cmbJenisBarang.getSelectedItem()+ "', "
                 + "stock='" + txtStockBarang.getText()+ "', "+ "harga='" + txtHargaBarang.getText()+ "' WHERE kode_barang ='" + sKode + "' ");
+                
+                JOptionPane.showMessageDialog(null, "Update Berhasil");
+                
             }else{
                 if (cariData(" WHERE kode_barang like  '%"+txtKodeBarang.getText()+"%'")){
                     JOptionPane.showMessageDialog(null, "Data Sudah Ada!","Pesan Error", JOptionPane.ERROR_MESSAGE);
-                    tampilData("");
+                    
+                    
                 }else{
                     st.executeUpdate("INSERT INTO barang VALUES ('"+txtKodeBarang.getText()+"','"+txtNamaBarang.getText()+"','"+cmbJenisBarang.getSelectedItem()+"','"+txtStockBarang.getText()+"','"+txtHargaBarang.getText()+"')");
+                    
+                    JOptionPane.showMessageDialog(null, "Simpan Berhasil");
                 }
             }
             tampilData("");
-            if (edit){
-                JOptionPane.showMessageDialog(null, "Update Berhasil");
-            }else {
-                JOptionPane.showMessageDialog(null, "Simpan Berhasil");
-            }
             refresh();    
         }catch (Exception e) {
             e.printStackTrace();
@@ -493,6 +499,10 @@ public class DataBarangGUI extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void cmbJenisBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbJenisBarangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbJenisBarangActionPerformed
 
    
 
